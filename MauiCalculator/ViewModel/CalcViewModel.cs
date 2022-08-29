@@ -18,9 +18,8 @@ namespace MauiCalculator.ViewModel
         {
             if (Formula.Length > 0)
             {
-                Formula = Formula.LastOrDefault() == ' ' ?
-                Formula.Remove(Formula.Length - 3, 3) :
-                Formula.Remove(Formula.Length - 1, 1);
+                var index = Formula.LastOrDefault() == ' ' ? 3 : 1;
+                Formula = Formula.Remove(Formula.Length - index, index);
             }
         });
         public ICommand CalculateCommand => new Command(() =>
